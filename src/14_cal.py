@@ -30,3 +30,21 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+
+sys_argv_length = len(sys.argv)
+today = datetime.today()
+global date
+if sys_argv_length == 1:
+    date = today
+elif sys_argv_length == 2:
+    month = int(sys.argv[1])
+    date = datetime(today.year, month, today.day)
+elif sys_argv_length == 3:
+    month = int(sys.argv[1])
+    year = int(sys.argv[2])
+    date = datetime(year, month, today.day)
+
+try:
+    print(date.strftime("%B in %Y"))
+except:
+    print("format sholud be like this, example: `14_cal.py [month] [year]`")
